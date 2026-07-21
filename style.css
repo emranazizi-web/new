@@ -1363,3 +1363,296 @@ width:100%;
 
 
 }
+
+/* =========================
+   GLITCH EFFECT
+========================= */
+
+
+.glitch {
+
+
+    animation: glitch .18s infinite;
+
+
+}
+
+
+
+
+@keyframes glitch {
+
+
+0% {
+
+transform:translate(0);
+
+}
+
+
+
+20% {
+
+transform:translate(-1px,1px);
+
+}
+
+
+
+40% {
+
+transform:translate(1px,-1px);
+
+}
+
+
+
+60% {
+
+transform:translate(-1px,0);
+
+}
+
+
+
+80% {
+
+transform:translate(1px,1px);
+
+}
+
+
+
+100% {
+
+transform:translate(0);
+
+}
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+   MOBILE RESPONSIVE
+========================= */
+
+
+@media(max-width:768px){
+
+
+
+nav {
+
+
+    display:flex;
+
+
+    flex-wrap:wrap;
+
+
+    justify-content:center;
+
+
+}
+
+
+
+nav a {
+
+
+    margin:5px;
+
+
+    font-size:14px;
+
+
+}
+
+
+
+
+
+
+.hero {
+
+
+    padding-top:80px;
+
+
+}
+
+
+
+
+.hero h1 {
+
+
+    font-size:36px;
+
+
+}
+
+
+
+
+.hero img {
+
+
+    width:160px;
+
+
+    height:160px;
+
+
+}
+
+
+
+
+
+
+.grid {
+
+
+    grid-template-columns:1fr;
+
+
+}
+
+
+
+
+
+
+section {
+
+
+    padding:50px 15px;
+
+
+}
+
+
+
+
+
+
+.contact-item {
+
+
+    flex-direction:column;
+
+
+    align-items:flex-start;
+
+
+}
+
+
+
+
+.contact-item span {
+
+
+    width:auto;
+
+
+    margin-bottom:4px;
+
+
+}
+
+
+
+
+
+
+
+#typing-text {
+
+
+    font-size:24px;
+
+
+}
+
+
+
+
+
+.loader-bar {
+
+
+    width:220px;
+
+
+}
+
+
+
+
+
+
+}
+
+
+
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+
+@media(max-width:480px){
+
+
+
+.hero h1 {
+
+
+    font-size:30px;
+
+
+}
+
+
+
+
+.hero p {
+
+
+    font-size:14px;
+
+
+}
+
+
+
+.btn {
+
+
+    padding:9px 14px;
+
+
+}
+
+
+
+
+.card {
+
+
+    padding:15px;
+
+
+}
+
+
+
+}
