@@ -1,0 +1,1365 @@
+/* =========================
+   GLOBAL SETTINGS
+========================= */
+
+* {
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+
+body {
+
+    margin: 0;
+
+    font-family: 'Inter', sans-serif;
+
+    background: #05070f;
+
+    color: white;
+
+    overflow-x: hidden;
+
+}
+
+
+
+
+canvas {
+
+    position: fixed;
+
+    top: 0;
+
+    left: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    z-index: -2;
+
+    opacity: 0.7;
+
+}
+
+
+
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+
+nav {
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 1000;
+
+
+    background: rgba(0,0,0,0.4);
+
+    backdrop-filter: blur(10px);
+
+
+    padding: 12px 0;
+
+    text-align: center;
+
+}
+
+
+
+
+nav a {
+
+    color: #00f7ff;
+
+    margin: 0 14px;
+
+    text-decoration: none;
+
+
+    padding: 6px 10px;
+
+
+    transition: 0.3s ease;
+
+}
+
+
+
+
+nav a:hover {
+
+    color: #00ff88;
+
+}
+
+
+
+
+
+
+
+/* =========================
+   HERO SECTION
+========================= */
+
+
+.hero {
+
+
+    text-align: center;
+
+
+    padding: 140px 20px 60px;
+
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+
+    gap: 20px;
+
+
+}
+
+
+
+
+.hero img {
+
+
+    width: 200px;
+
+
+    height: 200px;
+
+
+    border-radius: 50%;
+
+
+    border: 3px solid #00f7ff;
+
+
+    object-fit: cover;
+
+
+    box-shadow:
+
+    0 0 40px rgba(0,247,255,0.6);
+
+
+    transition:
+
+    transform 0.3s ease,
+
+    box-shadow 0.3s ease;
+
+
+}
+
+
+
+
+.hero img:hover {
+
+
+    transform: scale(1.05);
+
+
+    box-shadow:
+
+    0 0 60px rgba(0,247,255,0.8);
+
+
+}
+
+
+
+
+.hero h1 {
+
+
+    font-size: 48px;
+
+
+    color: #00f7ff;
+
+
+    margin: 0;
+
+
+}
+
+
+
+
+.hero p {
+
+
+    max-width: 800px;
+
+
+    margin: auto;
+
+
+    color: #cfd8dc;
+
+
+    line-height: 1.7;
+
+
+}
+
+
+
+
+
+.open-badge {
+
+
+    display: inline-block;
+
+
+    padding: 5px 12px;
+
+
+    font-size: 11px;
+
+
+    font-weight: 600;
+
+
+    letter-spacing: .5px;
+
+
+    text-transform: uppercase;
+
+
+    color: #00ff88;
+
+
+    background:
+
+    rgba(0,255,136,0.12);
+
+
+    border: 1px solid #00ff88;
+
+
+    border-radius: 20px;
+
+
+}
+
+
+
+
+
+
+/* =========================
+   GENERAL SECTIONS
+========================= */
+
+
+section {
+
+
+    padding: 70px 20px;
+
+
+    max-width: 1000px;
+
+
+    margin: auto;
+
+
+}
+
+
+
+
+h2 {
+
+
+    color: #00f7ff;
+
+
+    border-left: 4px solid #00ff88;
+
+
+    padding-left: 12px;
+
+
+    margin-bottom: 25px;
+
+
+}
+
+/* =========================
+   GRID SYSTEM
+========================= */
+
+
+.grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+
+    gap: 16px;
+
+}
+
+
+
+
+
+/* =========================
+   CARD DESIGN
+========================= */
+
+
+.card {
+
+
+    background:
+
+    rgba(255,255,255,0.05);
+
+
+    border:
+
+    1px solid rgba(0,247,255,0.15);
+
+
+    padding: 18px;
+
+
+    border-radius: 12px;
+
+
+    display: flex;
+
+
+    flex-direction: column;
+
+
+    gap: 10px;
+
+
+    transition:
+
+    transform .3s ease,
+
+    box-shadow .3s ease;
+
+
+}
+
+
+
+
+
+.card:hover {
+
+
+    transform:
+
+    translateY(-6px);
+
+
+    box-shadow:
+
+    0 10px 25px rgba(0,247,255,0.25);
+
+
+}
+
+
+
+
+
+.card h3 {
+
+
+    margin-top: 0;
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+
+.btn {
+
+
+    display: inline-block;
+
+
+    width: fit-content;
+
+
+    padding: 10px 16px;
+
+
+    background: #00f7ff;
+
+
+    color: black;
+
+
+    border: 1px solid #00f7ff;
+
+
+    border-radius: 8px;
+
+
+    text-decoration: none;
+
+
+    font-weight: 600;
+
+
+    cursor: pointer;
+
+
+    transition: .3s ease;
+
+
+}
+
+
+
+
+
+.btn:hover {
+
+
+    background: #00d9e6;
+
+
+    box-shadow:
+
+    0 0 18px rgba(0,247,255,0.7);
+
+
+}
+
+
+
+
+
+.hero-cv {
+
+
+    align-self: center;
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+   BADGES
+========================= */
+
+
+.badge {
+
+
+    display: inline-block;
+
+
+    width: fit-content;
+
+
+    padding: 4px 10px;
+
+
+    font-size: 12px;
+
+
+    background:
+
+    rgba(0,255,136,0.15);
+
+
+    color: #00ff88;
+
+
+    border:
+
+    1px solid #00ff88;
+
+
+    border-radius: 20px;
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+   CARD FOOTER
+========================= */
+
+
+.card-footer {
+
+
+    margin-top: auto;
+
+
+    display: flex;
+
+
+    flex-direction: column;
+
+
+    align-items: flex-start;
+
+
+    gap: 8px;
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+   CONTACT
+========================= */
+
+
+#contact {
+
+
+    display: flex;
+
+
+    justify-content: center;
+
+
+}
+
+
+
+
+.contact-card {
+
+
+    max-width: 300px;
+
+
+    width: 100%;
+
+
+    padding: 15px;
+
+
+}
+
+
+
+
+.contact-card h2 {
+
+
+    margin: 0;
+
+
+    font-size: 18px;
+
+
+}
+
+
+
+
+
+.contact-item {
+
+
+    display: flex;
+
+
+    align-items: center;
+
+
+    width: 100%;
+
+
+    padding: 5px 0;
+
+
+}
+
+
+
+
+.contact-item span {
+
+
+    width: 70px;
+
+
+    flex-shrink: 0;
+
+
+    font-size: 13px;
+
+
+    font-weight: 600;
+
+
+}
+
+
+
+
+
+.contact-item a {
+
+
+    color: #00f7ff;
+
+
+    text-decoration: none;
+
+
+    font-size: 13px;
+
+
+    word-break: break-word;
+
+
+}
+
+
+
+
+
+.contact-item a:hover {
+
+
+    color: #00ff88;
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+   PROGRESS BARS
+========================= */
+
+
+.progress-bar {
+
+
+    width: 100%;
+
+
+    height: 8px;
+
+
+    margin-top: 10px;
+
+
+    background:
+
+    rgba(255,255,255,0.1);
+
+
+    border-radius: 10px;
+
+
+    overflow: hidden;
+
+
+}
+
+
+
+
+.progress-fill {
+
+
+    height: 100%;
+
+
+    border-radius: 10px;
+
+
+    background: #00f7ff;
+
+
+}
+
+
+
+
+
+.full {
+
+    width:100%;
+
+    background:#00ff88;
+
+}
+
+
+.english {
+
+    width:66%;
+
+}
+
+
+.german {
+
+    width:52%;
+
+}
+
+
+.python {
+
+    width:30%;
+
+}
+
+
+.html-css {
+
+    width:30%;
+
+    background:#00ff88;
+
+}
+
+
+.github {
+
+    width:30%;
+
+}
+
+
+.ai {
+
+    width:50%;
+
+    background:#00ff88;
+
+}
+
+
+.management {
+
+    width:30%;
+
+}
+
+
+.teamwork {
+
+    width:100%;
+
+    background:#00ff88;
+
+}
+
+
+.writing {
+
+    width:60%;
+
+}
+
+
+.support {
+
+    width:30%;
+
+}
+
+/* =========================
+   EXPERIENCE
+========================= */
+
+
+.experience-card {
+
+
+    min-height: 560px;
+
+
+}
+
+
+
+
+.experience-card > p {
+
+
+    color: #cfd8dc;
+
+
+    line-height: 1.6;
+
+
+}
+
+
+
+
+
+.experience-content {
+
+
+    margin-top: auto;
+
+
+}
+
+
+
+
+
+.experience-content h4 {
+
+
+    color: #00f7ff;
+
+
+    margin-bottom: 8px;
+
+
+}
+
+
+
+
+
+.experience-content ul {
+
+
+    padding-left: 20px;
+
+
+    line-height: 1.7;
+
+
+}
+
+
+
+
+
+
+
+
+/* =========================
+   PROJECTS
+========================= */
+
+
+#projects .card {
+
+
+    min-height: 330px;
+
+
+}
+
+
+
+
+
+#projects .card .btn {
+
+
+    margin-top: auto;
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+   MESSAGE FORM
+========================= */
+
+
+.message-card {
+
+
+    max-width: 500px;
+
+
+    margin: auto;
+
+
+}
+
+
+
+
+#contact-form {
+
+
+    display: flex;
+
+
+    flex-direction: column;
+
+
+    align-items: center;
+
+
+    gap: 12px;
+
+
+}
+
+
+
+
+
+#contact-form input,
+
+
+#contact-form textarea {
+
+
+    width: 90%;
+
+
+    padding: 10px;
+
+
+    background:
+
+    rgba(255,255,255,0.05);
+
+
+    border:
+
+    1px solid rgba(0,247,255,0.2);
+
+
+    border-radius: 8px;
+
+
+    color: white;
+
+
+    font-size: 13px;
+
+
+    outline: none;
+
+
+}
+
+
+
+
+
+#contact-form textarea {
+
+
+    resize: none;
+
+
+}
+
+
+
+
+#contact-form input:focus,
+
+
+#contact-form textarea:focus {
+
+
+    border-color:#00f7ff;
+
+
+}
+
+
+
+
+
+
+
+
+/* =========================
+   CLOSING SECTION
+========================= */
+
+
+.closing-section {
+
+
+    padding: 70px 20px;
+
+
+}
+
+
+
+
+
+.closing-text {
+
+
+    text-align:center;
+
+
+    color:
+
+    rgba(255,255,255,0.7);
+
+
+    max-width:750px;
+
+
+    margin:auto;
+
+
+    font-size:15px;
+
+
+    line-height:1.9;
+
+
+    letter-spacing:.3px;
+
+
+}
+
+
+
+
+
+
+
+
+/* =========================
+   WELCOME SCREEN
+========================= */
+
+
+#welcome-screen {
+
+
+    position:fixed;
+
+
+    inset:0;
+
+
+    background:
+
+    radial-gradient(circle at center,#0b1220 0%,#05070f 60%);
+
+
+    display:flex;
+
+
+    justify-content:center;
+
+
+    align-items:center;
+
+
+    z-index:99999;
+
+
+    transition:opacity .9s ease;
+
+
+}
+
+
+
+
+
+#welcome-screen.hide {
+
+
+    opacity:0;
+
+
+    pointer-events:none;
+
+
+}
+
+
+
+
+
+
+
+.welcome-box {
+
+
+    text-align:center;
+
+
+    display:flex;
+
+
+    flex-direction:column;
+
+
+    align-items:center;
+
+
+    gap:14px;
+
+
+}
+
+
+
+
+
+
+
+#typing-text {
+
+
+    font-size:32px;
+
+
+    font-weight:700;
+
+
+    color:#00f7ff;
+
+
+    letter-spacing:1px;
+
+
+    min-height:40px;
+
+
+    text-shadow:
+
+    0 0 10px rgba(0,247,255,.35);
+
+
+    animation:
+
+    glowPulse 2.8s infinite;
+
+
+}
+
+
+
+
+
+@keyframes glowPulse {
+
+
+0% {
+
+
+text-shadow:
+
+0 0 10px rgba(0,247,255,.25);
+
+}
+
+
+50% {
+
+
+text-shadow:
+
+0 0 28px rgba(0,247,255,.75);
+
+}
+
+
+100% {
+
+
+text-shadow:
+
+0 0 10px rgba(0,247,255,.25);
+
+}
+
+
+}
+
+
+
+
+
+
+.glow-line {
+
+
+    width:160px;
+
+
+    height:2px;
+
+
+    background:
+
+    linear-gradient(90deg,#00f7ff,#00ff88);
+
+
+    border-radius:10px;
+
+
+}
+
+
+
+
+
+
+
+.loader-bar {
+
+
+    width:280px;
+
+
+    height:5px;
+
+
+    background:
+
+    rgba(255,255,255,.08);
+
+
+    border-radius:20px;
+
+
+    overflow:hidden;
+
+
+}
+
+
+
+
+.loader-fill {
+
+
+    height:100%;
+
+
+    width:0;
+
+
+    background:
+
+    linear-gradient(90deg,#00f7ff,#00ff88);
+
+
+    animation:
+
+    loadBar 3.2s forwards;
+
+
+}
+
+
+
+
+
+@keyframes loadBar {
+
+
+from {
+
+width:0;
+
+}
+
+
+to {
+
+width:100%;
+
+}
+
+
+}
+
+
+
+
+
+
+
+.sub-text {
+
+
+    font-size:12px;
+
+
+    color:
+
+    rgba(255,255,255,.6);
+
+
+    letter-spacing:1.2px;
+
+
+}
