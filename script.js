@@ -1,23 +1,22 @@
-// ===============================
-// CANVAS CODE BACKGROUND
-// ===============================
-
+/* =========================
+   MATRIX BACKGROUND
+========================= */
 
 const canvas = document.getElementById("code");
 const ctx = canvas.getContext("2d");
 
 
-function resizeCanvas(){
+function resizeCanvas() {
 
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
 
 }
 
 
 resizeCanvas();
 
-window.addEventListener("resize",resizeCanvas);
+window.addEventListener("resize", resizeCanvas);
 
 
 
@@ -25,295 +24,290 @@ const letters = "01 DATA AI CODE".split("");
 
 const fontSize = 13;
 
-let columns = canvas.width / fontSize;
+let columns = Math.floor(canvas.width / fontSize);
 
-let drops = Array(Math.floor(columns)).fill(1);
-
-
-
-function draw(){
-
-ctx.fillStyle="rgba(0,0,0,0.03)";
-
-ctx.fillRect(
-0,
-0,
-canvas.width,
-canvas.height
-);
-
-
-ctx.fillStyle="rgba(0,247,255,0.20)";
-
-ctx.font=fontSize+"px monospace";
+let drops = Array(columns).fill(1);
 
 
 
-for(let i=0;i<drops.length;i++){
+function drawMatrix() {
 
 
-let text =
-letters[Math.floor(Math.random()*letters.length)];
+    ctx.fillStyle = "rgba(0,0,0,0.03)";
+
+    ctx.fillRect(
+        0,
+        0,
+        canvas.width,
+        canvas.height
+    );
 
 
-ctx.fillText(
-text,
-i*fontSize,
-drops[i]*fontSize
-);
+    ctx.fillStyle =
+    "rgba(0,247,255,0.20)";
+
+
+    ctx.font =
+    fontSize + "px monospace";
 
 
 
-if(
-drops[i]*fontSize > canvas.height
-&& Math.random()>0.98
-){
+    for(let i = 0; i < drops.length; i++) {
 
-drops[i]=0;
+
+        const text =
+        letters[Math.floor(Math.random() * letters.length)];
+
+
+
+        ctx.fillText(
+            text,
+            i * fontSize,
+            drops[i] * fontSize
+        );
+
+
+
+        if(
+            drops[i] * fontSize > canvas.height
+            &&
+            Math.random() > 0.98
+        ) {
+
+            drops[i] = 0;
+
+        }
+
+
+        drops[i]++;
+
+    }
+
 
 }
 
 
-drops[i]++;
 
-
-}
-
-
-}
-
-
-
-setInterval(draw,80);
+setInterval(drawMatrix,80);
 
 
 
 
 
 
-
-// ===============================
-// EMAILJS MESSAGE FORM
-// ===============================
-
+/* =========================
+   EMAILJS
+========================= */
 
 
-document.addEventListener("DOMContentLoaded",()=>{
+document.addEventListener(
+"DOMContentLoaded",
+function(){
 
 
-emailjs.init(
-"hhxgoyeEfEqFF-TxH"
-);
-
-
-
-const form =
-document.getElementById("contact-form");
+    emailjs.init(
+        "hhxgoyeEfEqFF-TxH"
+    );
 
 
 
-if(form){
-
-
-form.addEventListener(
-"submit",
-function(e){
-
-
-e.preventDefault();
+    const form =
+    document.getElementById("contact-form");
 
 
 
-emailjs.send(
-
-"service_emran",
-
-"template_y6hwt0b",
-
-{
-
-name:this.name.value,
-
-email:this.email.value,
-
-message:this.message.value
-
-}
+    if(form){
 
 
-)
-
-.then(()=>{
-
-
-alert(
-"Message sent successfully!"
-);
+        form.addEventListener(
+        "submit",
+        function(event){
 
 
-this.reset();
+            event.preventDefault();
 
 
-})
+
+            emailjs.send(
+                "service_emran",
+                "template_y6hwt0b",
+                {
+
+                    name:this.name.value,
+
+                    email:this.email.value,
+
+                    message:this.message.value
+
+                }
+
+            )
+
+            .then(()=>{
 
 
-.catch(error=>{
+                alert(
+                "Message sent successfully!"
+                );
 
 
-console.log(error);
+                this.reset();
 
 
-alert(
-"Failed to send message."
-);
+            })
+
+            .catch(error=>{
+
+
+                console.log(error);
+
+
+                alert(
+                "Failed to send message."
+                );
+
+
+            });
+
+
+
+        });
+
+
+    }
+
 
 
 });
 
 
 
-});
-
-
-}
-
-
-
-});
 
 
 
 
-
-
-
-// ===============================
-// WELCOME SCREEN
-// ===============================
-
+/* =========================
+   WELCOME SCREEN
+========================= */
 
 
 window.addEventListener(
 "load",
-()=>{
+function(){
 
 
-const screen =
-document.getElementById(
-"welcome-screen"
-);
+    const screen =
+    document.getElementById(
+        "welcome-screen"
+    );
 
 
+    const typingEl =
+    document.getElementById(
+        "typing-text"
+    );
 
-const typing =
-document.getElementById(
-"typing-text"
-);
 
 
+    if(!screen || !typingEl)
+    return;
 
-if(!screen || !typing)
-return;
 
 
+    const text =
+    "Welcome to Emran Azizi Portfolio";
 
 
-const text =
-"Welcome to Emran Azizi Portfolio";
+    let index = 0;
 
 
-let index=0;
 
+    function typeText(){
 
 
-function type(){
+        if(index < text.length){
 
 
-if(index < text.length){
+            typingEl.innerHTML +=
+            text.charAt(index);
 
 
-typing.innerHTML +=
-text.charAt(index);
+            index++;
 
 
-index++;
+            setTimeout(
+                typeText,
+                55
+            );
 
 
-setTimeout(
-type,
-55
-);
+        }
 
 
-}
+    }
 
 
-}
 
+    typeText();
 
 
-type();
 
 
+    setTimeout(()=>{
 
 
-setTimeout(()=>{
+        typingEl.classList.add(
+            "glitch"
+        );
 
 
-typing.classList.add(
-"glitch"
-);
+    },1200);
 
 
-},1200);
 
 
+    setTimeout(()=>{
 
 
+        typingEl.classList.remove(
+            "glitch"
+        );
 
-setTimeout(()=>{
 
+        typingEl.innerHTML =
+        "System Ready";
 
-typing.classList.remove(
-"glitch"
-);
 
+    },2500);
 
-typing.innerHTML =
-"System Ready";
 
 
 
-},2500);
 
 
+    setTimeout(()=>{
 
 
+        screen.style.opacity="0";
 
 
-setTimeout(()=>{
 
+        setTimeout(()=>{
 
-screen.style.opacity="0";
 
+            screen.style.display="none";
 
 
-setTimeout(()=>{
+            document.body.classList.add(
+                "loaded"
+            );
 
 
-screen.style.display="none";
+        },800);
 
 
-document.body.classList.add(
-"loaded"
-);
 
-
-},800);
-
-
-
-},3800);
+    },3800);
 
 
 
