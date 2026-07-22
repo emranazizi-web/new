@@ -1,245 +1,181 @@
-/* =========================
-   MATRIX BACKGROUND
-========================= */
+// ===============================
+// CANVAS CODE BACKGROUND
+// ===============================
 
 
 const canvas = document.getElementById("code");
+const ctx = canvas.getContext("2d");
 
 
-if (canvas) {
+function resizeCanvas(){
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+}
 
 
-    const ctx = canvas.getContext("2d");
+resizeCanvas();
 
-
-    function resizeCanvas(){
-
-        canvas.width = window.innerWidth;
-
-        canvas.height = window.innerHeight;
-
-    }
-
-
-    resizeCanvas();
+window.addEventListener("resize",resizeCanvas);
 
 
 
-    window.addEventListener(
-        "resize",
-        resizeCanvas
-    );
+const letters = "01 DATA AI CODE".split("");
+
+const fontSize = 13;
+
+let columns = canvas.width / fontSize;
+
+let drops = Array(Math.floor(columns)).fill(1);
 
 
 
+function draw(){
 
-    const letters = "01 DATA AI CODE".split("");
+ctx.fillStyle="rgba(0,0,0,0.03)";
 
-    const fontSize = 13;
-
-
-    let columns = Math.floor(
-        canvas.width / fontSize
-    );
-
-
-    let drops = Array(columns).fill(1);
+ctx.fillRect(
+0,
+0,
+canvas.width,
+canvas.height
+);
 
 
+ctx.fillStyle="rgba(0,247,255,0.20)";
 
-
-    function drawMatrix(){
-
-
-        ctx.fillStyle =
-        "rgba(0,0,0,0.03)";
-
-
-        ctx.fillRect(
-            0,
-            0,
-            canvas.width,
-            canvas.height
-        );
+ctx.font=fontSize+"px monospace";
 
 
 
-        ctx.fillStyle =
-        "rgba(0,247,255,0.20)";
+for(let i=0;i<drops.length;i++){
 
 
-        ctx.font =
-        fontSize + "px monospace";
+let text =
+letters[Math.floor(Math.random()*letters.length)];
 
 
-
-
-        for(
-            let i = 0;
-            i < drops.length;
-            i++
-        ){
-
-
-            const text =
-            letters[
-                Math.floor(
-                    Math.random() * letters.length
-                )
-            ];
+ctx.fillText(
+text,
+i*fontSize,
+drops[i]*fontSize
+);
 
 
 
-            ctx.fillText(
-                text,
-                i * fontSize,
-                drops[i] * fontSize
-            );
+if(
+drops[i]*fontSize > canvas.height
+&& Math.random()>0.98
+){
+
+drops[i]=0;
+
+}
 
 
+drops[i]++;
 
 
-            if(
-                drops[i] * fontSize > canvas.height
-                &&
-                Math.random() > 0.98
-            ){
-
-                drops[i] = 0;
-
-            }
-
-
-
-            drops[i]++;
-
-        }
-
-
-    }
-
-
-
-    setInterval(
-        drawMatrix,
-        80
-    );
+}
 
 
 }
 
 
 
+setInterval(draw,80);
 
 
 
 
-/* =========================
-   EMAILJS CONTACT FORM
-========================= */
-
-
-document.addEventListener(
-"DOMContentLoaded",
-function(){
 
 
 
-    if(typeof emailjs !== "undefined"){
-
-
-        emailjs.init(
-            "hhxgoyeEfEqFF-TxH"
-        );
-
-
-    }
+// ===============================
+// EMAILJS MESSAGE FORM
+// ===============================
 
 
 
-
-    const form =
-    document.getElementById(
-        "contact-form"
-    );
+document.addEventListener("DOMContentLoaded",()=>{
 
 
-
-
-    if(form){
+emailjs.init(
+"hhxgoyeEfEqFF-TxH"
+);
 
 
 
-        form.addEventListener(
-        "submit",
-        function(event){
+const form =
+document.getElementById("contact-form");
 
 
 
-            event.preventDefault();
+if(form){
+
+
+form.addEventListener(
+"submit",
+function(e){
+
+
+e.preventDefault();
 
 
 
+emailjs.send(
 
-            emailjs.send(
-                "service_emran",
-                "template_y6hwt0b",
-                {
+"service_emran",
 
-                    name:
-                    this.name.value,
+"template_y6hwt0b",
 
+{
 
-                    email:
-                    this.email.value,
+name:this.name.value,
 
+email:this.email.value,
 
-                    message:
-                    this.message.value
+message:this.message.value
 
-                }
-
-            )
+}
 
 
+)
 
-            .then(()=>{
-
-
-                alert(
-                    "Message sent successfully!"
-                );
+.then(()=>{
 
 
-                form.reset();
+alert(
+"Message sent successfully!"
+);
 
 
-
-            })
-
+this.reset();
 
 
-            .catch(
-            (error)=>{
+})
 
 
-                console.log(error);
+.catch(error=>{
 
 
-                alert(
-                    "Failed to send message."
-                );
+console.log(error);
 
 
-            });
+alert(
+"Failed to send message."
+);
+
+
+});
 
 
 
-        });
+});
 
 
-
-    }
+}
 
 
 
@@ -251,38 +187,33 @@ function(){
 
 
 
+// ===============================
+// WELCOME SCREEN
+// ===============================
 
-/* =========================
-   WELCOME SCREEN
-========================= */
 
 
 window.addEventListener(
 "load",
-function(){
-
+()=>{
 
 
 const screen =
 document.getElementById(
-    "welcome-screen"
+"welcome-screen"
 );
 
 
 
 const typing =
 document.getElementById(
-    "typing-text"
+"typing-text"
 );
 
 
 
-
-if(!screen || !typing){
-
-    return;
-
-}
+if(!screen || !typing)
+return;
 
 
 
@@ -291,47 +222,37 @@ const text =
 "Welcome to Emran Azizi Portfolio";
 
 
-let index = 0;
+let index=0;
 
 
 
+function type(){
 
 
-function typeText(){
+if(index < text.length){
 
 
-
-    if(index < text.length){
-
-
-
-        typing.innerHTML +=
-        text.charAt(index);
+typing.innerHTML +=
+text.charAt(index);
 
 
-
-        index++;
-
+index++;
 
 
-        setTimeout(
-            typeText,
-            55
-        );
+setTimeout(
+type,
+55
+);
 
 
-    }
-
+}
 
 
 }
 
 
 
-
-typeText();
-
-
+type();
 
 
 
@@ -339,9 +260,9 @@ typeText();
 setTimeout(()=>{
 
 
-    typing.classList.add(
-        "glitch"
-    );
+typing.classList.add(
+"glitch"
+);
 
 
 },1200);
@@ -350,18 +271,16 @@ setTimeout(()=>{
 
 
 
-
 setTimeout(()=>{
 
 
-    typing.classList.remove(
-        "glitch"
-    );
+typing.classList.remove(
+"glitch"
+);
 
 
-
-    typing.innerHTML =
-    "System Ready";
+typing.innerHTML =
+"System Ready";
 
 
 
@@ -372,38 +291,29 @@ setTimeout(()=>{
 
 
 
+setTimeout(()=>{
+
+
+screen.style.opacity="0";
+
+
 
 setTimeout(()=>{
 
 
-
-    screen.style.opacity =
-    "0";
+screen.style.display="none";
 
 
+document.body.classList.add(
+"loaded"
+);
 
 
-    setTimeout(()=>{
-
-
-        screen.style.display =
-        "none";
-
-
-
-        document.body.classList.add(
-            "loaded"
-        );
-
-
-
-    },800);
+},800);
 
 
 
 },3800);
-
-
 
 
 
